@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Recommendation | Ideazoo</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #141e30, #243b55);
+      margin: 0;
+      padding: 0;
+      color: #fff;
+    }
+    header {
+        background-color: #222;
+        color: #f0f0f0;
+        padding: 10px 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        width: 98.5%;
+        z-index: 1000;  
+      }
+  
+      header h1 {
+        margin: 0;
+        font-size: 2rem;
+      }
+      nav a {
+        color: #f0f0f0;
+        margin-left: 20px;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1.1rem;
+        transition: color 0.3s ease;
+      }
+  
+      nav a:hover,
+      .navbar a:hover {
+        color: #00f0f0;
+      }
+
+    .container {
+      max-width: 300px;
+      margin: 50px auto;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      right: 450px;
+      position: relative;
+      top: 20px;
+      z-index: 1;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #00ffd5;
+    }
+
+    form label {
+      display: block;
+      margin: 15px 0 5px;
+    }
+
+    form input, form select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      margin-bottom: 15px;
+      font-size: 15px;
+    }
+
+    form button {
+      width: 100%;
+      padding: 12px;
+      background-color: #00b894;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 16px;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    form button:hover {
+      background-color: #009e7d;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>⚡ Ideazoo</h1>
+    <nav>
+      <a href="add card.html">Add Card</a>
+      <a href="login page.html">Login</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h2>Find Your Perfect Smarthone 💻</h2>
+    <form onsubmit="handleRecommendation(event)">
+     
+      <form action="/recommendation-results" method="POST">
+        <div class="filter-section">
+          
+          <label for="processorType"><strong>Processor Type</strong></label>
+          <select id="processorType" name="processorType">
+        <option value="" disabled selected>Select an option</option>
+        <option>Intel i7</option>
+        <option>Intel i5</option>
+        <option>AMD Ryzen 5</option>
+        <option>AMD Ryzen 7</option>
+        <option>Apple M1</option>
+        <option>Apple M2</option>
+        <option>Intel i9</option>
+        <option>AMD Ryzen 9</option>
+        <option>Intel i3</option>
+        <option>AMD Ryzen 3</option>
+        <option>Other</option>
+          </select>
+      
+          <label for="ramType"><strong>RAM Type</strong></label>
+          <select id="ramType" name="ramType">
+        <option value="" disabled selected>Select an option</option>
+        <option>DDR4</option>
+        <option>LPDDR4</option>
+        <option>LPDDR5</option>
+        <option>DDR3</option>
+        <option>LPDDR3</option>
+        <option>DDR5</option>
+        <option>Other</option>
+          </select>
+      
+          <label for="ramManufacturer"><strong>RAM Manufacturer</strong></label>
+          <select id="ramManufacturer" name="ramManufacturer">
+        <option value="" disabled selected>Select an option</option>
+        <option>Kingston</option>
+        <option>Corsair</option>
+        <option>Crucial</option>
+        <option>G.Skill</option>
+        <option>Samsung</option>
+        <option>Micron</option>
+        <option>Hynix</option>
+        <option>Other</option>
+          </select>
+      
+          <label for="ramSpeed"><strong>RAM Speed</strong></label>
+          <select id="ramSpeed" name="ramSpeed">
+        <option value="" disabled selected>Select an option</option>
+        <option>2400</option>
+        <option>2666</option>
+        <option>2933</option>
+        <option>3200</option>
+        <option>3600</option>
+        <option>4000</option>
+        <option>Other</option>
+          </select>
+      
+          <label for="ramFormFactor"><strong>RAM Form Factor</strong></label>
+          <select id="ramFormFactor" name="ramFormFactor">
+        <option value="" disabled selected>Select an option</option>
+        <option>SO-DIMM</option>
+        <option>DIMM</option>
+        <option>LPDDR4X</option>
+        <option>LPDDR5X</option>
+        <option>Other</option>
+          </select>
+      
+          <label for="ramSlots"><strong>RAM Slots</strong></label>
+          <select id="ramSlots" name="ramSlots">
+        <option value="" disabled selected>Select an option</option>
+        <option>2</option>
+        <option>4</option>
+        <option>8</option>
+        <option>16</option>
+        <option>32</option>
+        <option>64</option>
+        <option>Other</option>
+          </select>
+      
+          <label for="ramSize"><strong>RAM Size</strong></label>
+          <select id="ramSize" name="ramSize">
+        <option value="" disabled selected>Select an option</option>
+        <option>4GB</option>
+        <option>8GB</option>
+        <option>16GB</option>
+        <option>32GB</option>
+        <option>64GB</option>
+        <option>128GB</option>
+        <option>Other</option>
+          </select>
+      
+          <label for="priceRange"><strong>Price Range (₹)</strong></label>
+          <select id="priceRange" name="priceRange">
+        <option value="" disabled selected>Select an option</option>
+        <option>30000-50000</option>
+        <option>50000-70000</option>
+        <option>70000-90000</option>
+        <option>90000-110000</option>
+        <option>110000-130000</option>
+        <option>130000-150000</option>
+        <option>150000-170000</option>
+        <option>170000-190000</option>
+        <option>190000-210000</option>
+        <option>210000-230000</option>
+        <option>230000-250000</option>
+        <option>250000-270000</option>
+        <option>270000-290000</option>
+        <option>290000-310000</option>
+        <option>310000-330000</option>
+        \</select>
+      
+          <label for="brands"><strong>Brands</strong></label>
+          <select id="brands" name="brands">
+        <option value="" disabled selected>Select an option</option>
+        <option>Dell</option>
+        <option>HP</option>
+        <option>Lenovo</option>
+        <option>Asus</option>
+        <option>Acer</option>
+        <option>Apple</option>
+        <option>MSI</option>
+        <option>Razer</option>
+        <option>Toshiba</option>
+        <option>Samsung</option>
+        <option>Microsoft</option>
+        <option>LG</option>
+        <option>Huawei</option>
+        <option>Xiaomi</option>
+        <option>Other</option>
+          </select>
+      
+          <label for="displaySize"><strong>Display Size</strong></label>
+          <select id="displaySize" name="displaySize">
+        <option value="" disabled selected>Select an option</option>
+        <option>13.3</option>
+        <option>14</option>
+        <option>15.6</option>
+        <option>17.3</option>
+        <option>18.4</option>
+          </select>
+      
+          <label for="graphicsCoprocessor"><strong>Graphics Coprocessor</strong></label>
+          <select id="graphicsCoprocessor" name="graphicsCoprocessor">
+        <option value="" disabled selected>Select an option</option>
+        <option>NVIDIA</option>
+        <option>AMD Radeon</option>
+        <option>Intel Iris</option>
+        <option>Intel UHD</option>
+        <option>Apple M1</option>
+        <option>Apple M2</option>
+        <option>Other</option>
+          </select>
+      
+          <label for="graphicsType"><strong>Graphics Type</strong></label>
+          <select id="graphicsType" name="graphicsType">
+        <option value="" disabled selected>Select an option</option>
+        <option>Integrated</option>
+        <option>Dedicated</option>
+        <option>Hybrid</option>
+        <option>Other</option>
+          </select>
+      
+          <label for="hddSize"><strong>HDD Size</strong></label>
+          <select id="hddSize" name="hddSize">
+        <option value="" disabled selected>Select an option</option>
+        <option>128GB</option>
+        <option>256GB</option>
+        <option>512GB</option>
+        <option>1TB</option>
+          </select>
+      
+          <label for="hardDisk"><strong>Hard Disk Description</strong></label>
+          <select id="hardDisk" name="hardDisk">
+        <option value="" disabled selected>Select an option</option>
+        <option>SSD</option>
+        <option>HDD</option>
+        <option>Hybrid</option>
+        <option>eMMC</option>
+        <option>NVMe</option>
+        <option>Other</option>
+          </select>
+      
+          <label for="specificUser"><strong>Specific User</strong></label>
+          <select id="specificUser" name="specificUser">
+        <option value="" disabled selected>Select an option</option>
+        <option>Student</option>
+        <option>Gaming</option>
+        <option>Business</option>
+        <option>Content Creation</option>
+        <option>Graphic Design</option>
+        <option>Software Development</option>
+        <option>Video Editing</option>
+        <option>Other</option>
+          </select>
+      
+          <label for="graphicsMemory"><strong>Graphics Memory</strong></label>
+          <select id="graphicsMemory" name="graphicsMemory">
+        <option value="" disabled selected>Select an option</option>
+        <option>2GB</option>
+        <option>4GB</option>
+        <option>6GB</option>
+        <option>8GB</option>
+        <option>10GB</option>
+        <option>12GB</option>
+        <option>16GB</option>
+        <option>Other</option>
+          </select>
+      
+          <label for="os"><strong>Operating System</strong></label>
+          <select id="os" name="os">
+        <option value="" disabled selected>Select an option</option>
+        <option>Windows 10</option>
+        <option>Windows 11</option>
+        <option>Linux</option>
+        <option>macOS</option>
+        <option>Chrome OS</option>
+        <option>Other</option>
+          </select>
+      
+          <label for="processorCount"><strong>Processor Count</strong></label>
+          <select id="processorCount" name="processorCount">
+        <option value="" disabled selected>Select an option</option>
+        <option>2</option>
+        <option>4</option>
+        <option>6</option>
+        <option>8</option>
+        <option>10</option>
+          </select>
+      
+          <label for="displayType"><strong>Display Type</strong></label>
+          <select id="displayType" name="displayType">
+        <option value="" disabled selected>Select an option</option>
+        <option>LED</option>
+        <option>IPS</option>
+        <option>OLED</option>
+        <option>TN</option>
+        <option>VA</option>
+        <option>Other</option>
+          </select>
+      
+          <label for="battery"><strong>Battery Life (hours)</strong></label>
+          <select id="battery" name="battery">
+        <option value="" disabled selected>Select an option</option>
+        <option>2</option>
+        <option>4</option>
+        <option>6</option>
+        <option>8</option>
+        <option>10</option>
+          </select>
+      
+          <label for="processorSpeed"><strong>Processor Speed (GHz)</strong></label>
+          <select id="processorSpeed" name="processorSpeed">
+        <option value="" disabled selected>Select an option</option>
+        <option>1.0</option>
+        <option>1.5</option>
+        <option>2.0</option>
+        <option>2.5</option>
+        <option>3.0</option>
+        <option>3.5</option>
+        <option>4.0</option>
+          </select>
+      
+          <label for="weight"><strong>Weight (kg)</strong></label>
+          <select id="weight" name="weight">
+        <option value="" disabled selected>Select an option</option>
+        <option>1.0</option>
+        <option>1.5</option>
+        <option>2.0</option>
+        <option>2.5</option>
+        <option>3.0</option>
+          </select>
+      
+          <label for="security"><strong>Security Features</strong></label>
+          <select id="security" name="security">
+        <option value="" disabled selected>Select an option</option>
+        <option>Fingerprint</option>
+        <option>TPM</option>
+        <option>Face Recognition</option>
+        <option>Other</option>
+          </select>
+      
+          <label for="laptopType"><strong>Laptop Type</strong></label>
+          <select id="laptopType" name="laptopType">
+        <option value="" disabled selected>Select an option</option>
+        <option>Gaming</option>
+        <option>Ultrabook</option>
+        <option>Business</option>
+        <option>2-in-1</option>
+        <option>Chromebook</option>
+          </select>
+      
+          <label for="city"><strong>City</strong></label>
+          <select id="city" name="city">
+        <option value="" disabled selected>Select an option</option>
+        <option>Ahmedabad</option>
+        <option>Surat</option>
+        <option>Rajkot</option>
+        <option>Vadodara</option>
+        <option>Gandhinagar</option>
+        <option>Other</option>
+          </select>
+      
+          <br><br>
+          <button type="submit">Search Laptops</button>
+      
+        </div>
+      </form>
+      <div class="filter-group">
+
+</div>
+  </form>
+  </div>
+
+  <script>
+    function handleRecommendation(e) {
+      e.preventDefault();
+      alert("✅ Recommendation submitted! Our system will suggest a laptop based on your inputs.");
+      // You can store data or integrate backend here
+    }
+  </script>
+</body>
+</html>

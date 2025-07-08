@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Recommendation | Ideazoo</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #141e30, #243b55);
+      margin: 0;
+      padding: 0;
+      color: #fff;
+    }
+    header {
+        background-color: #222;
+        color: #f0f0f0;
+        padding: 10px 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        width: 98.5%;
+        z-index: 1000;  
+      }
+  
+      header h1 {
+        margin: 0;
+        font-size: 2rem;
+      }
+      nav a {
+        color: #f0f0f0;
+        margin-left: 20px;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1.1rem;
+        transition: color 0.3s ease;
+      }
+  
+      nav a:hover,
+      .navbar a:hover {
+        color: #00f0f0;
+      }
+
+    .container {
+      max-width: 300px;
+      margin: 50px auto;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      right: 450px;
+      position: relative;
+      top: 20px;
+      z-index: 1;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #00ffd5;
+    }
+
+    form label {
+      display: block;
+      margin: 15px 0 5px;
+    }
+
+    form input, form select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      margin-bottom: 15px;
+      font-size: 15px;
+    }
+
+    form button {
+      width: 100%;
+      padding: 12px;
+      background-color: #00b894;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 16px;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    form button:hover {
+      background-color: #009e7d;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>⚡ Ideazoo</h1>
+    <nav>
+      <a href="add card.html">Add Card</a>
+      <a href="login page.html">Login</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h2>Find Your Perfect Smartwatch</h2>
+    <form onsubmit="handleRecommendation(event)">
+     
+      <form action="/recommendation-results" method="POST">
+        <div class="filter-section">
+          
+            <label for="price">Price</label>
+            <select id="price" name="price">
+              <option selected disabled>Select Price Range</option>
+              <option value="under1000">Under ₹1000</option>
+              <option value="1000-3000">₹1000 - ₹3000</option>
+              <option value="3000-5000">₹3000 - ₹5000</option>
+              <option value="5000-8000">₹5000 - ₹8000</option>
+              <option value="8000plus">₹8000+</option>
+            </select>
+        
+            <label for="specialFeature">Special Features</label>
+            <select id="specialFeature" name="specialFeature">
+              <option selected disabled>Select Special Feature</option>
+              <option value="GPS">GPS</option>
+              <option value="Heart Rate Monitor">Heart Rate Monitor</option>
+              <option value="Bluetooth Calling">Bluetooth Calling</option>
+              <option value="SpO2 Monitor">SpO2 Monitor</option>
+              <option value="Voice Assistant">Voice Assistant</option>
+            </select>
+        
+            <label for="brands">Brands</label>
+            <select id="brands" name="brands">
+              <option selected disabled>Select Brand</option>
+              <option value="Apple">Apple</option>
+              <option value="Samsung">Samsung</option>
+              <option value="Noise">Noise</option>
+              <option value="boAt">boAt</option>
+              <option value="Fire-Boltt">Fire-Boltt</option>
+              <option value="Fastrack">Fastrack</option>
+              <option value="Realme">Realme</option>
+              <option value="OnePlus">OnePlus</option>
+            </select>
+        
+            <label for="screenSize">Screen Size (in inches)</label>
+            <select id="screenSize" name="screenSize">
+              <option selected disabled>Select Screen Size</option>
+              <option value="1.2">1.2"</option>
+              <option value="1.3">1.3"</option>
+              <option value="1.4">1.4"</option>
+              <option value="1.5">1.5"</option>
+              <option value="1.69">1.69"</option>
+              <option value="1.78">1.78"</option>
+            </select>
+        
+            <label for="batteryLife">Battery Average Life (in days)</label>
+            <select id="batteryLife" name="batteryLife">
+              <option selected disabled>Select Battery Life</option>
+              <option value="1-2">1-2 Days</option>
+              <option value="3-5">3-5 Days</option>
+              <option value="6-8">6-8 Days</option>
+              <option value="9plus">9+ Days</option>
+            </select>
+        
+            <label for="sportType">Sport Type</label>
+            <select id="sportType" name="sportType">
+              <option selected disabled>Select Sport Type</option>
+              <option value="Running">Running</option>
+              <option value="Cycling">Cycling</option>
+              <option value="Swimming">Swimming</option>
+              <option value="Multisport">Multisport</option>
+            </select>
+        
+            <label for="controllerType">Controller Type</label>
+            <select id="controllerType" name="controllerType">
+              <option selected disabled>Select Controller Type</option>
+              <option value="Touchscreen">Touchscreen</option>
+              <option value="Button">Button</option>
+              <option value="Rotating Crown">Rotating Crown</option>
+            </select>
+        
+            <label for="watchBandColor">Watch Band Colour</label>
+            <select id="watchBandColor" name="watchBandColor">
+              <option selected disabled>Select Band Colour</option>
+              <option value="Black">Black</option>
+              <option value="White">White</option>
+              <option value="Blue">Blue</option>
+              <option value="Green">Green</option>
+              <option value="Pink">Pink</option>
+              <option value="Red">Red</option>
+            </select>
+        
+            <label for="metricsMeasured">Metrics Measured</label>
+            <select id="metricsMeasured" name="metricsMeasured">
+              <option selected disabled>Select Metrics</option>
+              <option value="Heart Rate">Heart Rate</option>
+              <option value="Steps">Steps</option>
+              <option value="Calories Burned">Calories Burned</option>
+              <option value="Sleep Tracking">Sleep Tracking</option>
+              <option value="Blood Oxygen">Blood Oxygen</option>
+            </select>
+        
+            <label for="communication">Communication Feature</label>
+            <select id="communication" name="communication">
+              <option selected disabled>Select Communication</option>
+              <option value="Bluetooth Calling">Bluetooth Calling</option>
+              <option value="Text Messaging">Text Messaging</option>
+              <option value="App Notifications">App Notifications</option>
+              <option value="Call Alerts">Call Alerts</option>
+            </select>
+      
+          <br><br>
+          <button type="submit">Search</button>
+      
+        </div>
+      </form>
+      <div class="filter-group">
+
+</div>
+  </form>
+  </div>
+
+  <script>
+    function handleRecommendation(e) {
+      e.preventDefault();
+      alert("✅ Recommendation submitted! Our system will suggest a smartwatch based on your inputs.");
+      // You can store data or integrate backend here
+    }
+  </script>
+</body>
+</html>

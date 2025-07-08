@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Recommendation | Ideazoo</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #141e30, #243b55);
+      margin: 0;
+      padding: 0;
+      color: #fff;
+    }
+    header {
+        background-color: #222;
+        color: #f0f0f0;
+        padding: 10px 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        width: 98.5%;
+        z-index: 1000;  
+      }
+  
+      header h1 {
+        margin: 0;
+        font-size: 2rem;
+      }
+      nav a {
+        color: #f0f0f0;
+        margin-left: 20px;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1.1rem;
+        transition: color 0.3s ease;
+      }
+  
+      nav a:hover,
+      .navbar a:hover {
+        color: #00f0f0;
+      }
+
+    .container {
+      max-width: 300px;
+      margin: 50px auto;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      right: 450px;
+      position: relative;
+      top: 20px;
+      z-index: 1;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #00ffd5;
+    }
+
+    form label {
+      display: block;
+      margin: 15px 0 5px;
+    }
+
+    form input, form select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      margin-bottom: 15px;
+      font-size: 15px;
+    }
+
+    form button {
+      width: 100%;
+      padding: 12px;
+      background-color: #00b894;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 16px;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    form button:hover {
+      background-color: #009e7d;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>⚡ Ideazoo</h1>
+    <nav>
+      <a href="add card.html">Add Card</a>
+      <a href="login page.html">Login</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h2>Find Your Perfect Smart TV</h2>
+    <form onsubmit="handleRecommendation(event)">
+     
+        <form action="smartphone_results.php" method="POST">
+
+          <label for="price">Price</label>
+          <select id="price" name="price">
+            <option selected disabled>Select Price Range</option>
+            <option value="under10000">Under ₹10,000</option>
+            <option value="10000-20000">₹10,000 - ₹20,000</option>
+            <option value="20000-30000">₹20,000 - ₹30,000</option>
+            <option value="30000-50000">₹30,000 - ₹50,000</option>
+            <option value="50000plus">₹50,000+</option>
+          </select>
+      
+          <label for="resolution">Display Resolution</label>
+          <select id="resolution" name="resolution">
+            <option selected disabled>Select Resolution</option>
+            <option value="HD Ready">HD Ready (720p)</option>
+            <option value="Full HD">Full HD (1080p)</option>
+            <option value="4K UHD">4K UHD</option>
+            <option value="8K">8K</option>
+            <option value="Other">Other</option>
+          </select>
+      
+          <label for="os">Operating System</label>
+          <select id="os" name="os">
+            <option selected disabled>Select OS</option>
+            <option value="Android TV">Android TV</option>
+            <option value="WebOS">WebOS</option>
+            <option value="Tizen">Tizen</option>
+            <option value="Fire TV">Fire TV</option>
+            <option value="Roku TV">Roku TV</option>
+            <option value="Google TV">Google TV</option>
+            <option value="Other">Other</option>
+          </select>
+      
+          <label for="brands">Brands</label>
+          <select id="brands" name="brands">
+            <option selected disabled>Select Brand</option>
+            <option value="Samsung">Samsung</option>
+            <option value="LG">LG</option>
+            <option value="Sony">Sony</option>
+            <option value="Mi">Mi</option>
+            <option value="OnePlus">OnePlus</option>
+            <option value="TCL">TCL</option>
+            <option value="Hisense">Hisense</option>
+            <option value="Realme">Realme</option>
+            <option value="Panasonic">Panasonic</option>
+            <option value="Other">Other</option>
+          </select>
+      
+          <label for="screenSize">Screen Size</label>
+          <select id="screenSize" name="screenSize">
+            <option selected disabled>Select Screen Size</option>
+            <option value="32">32 inch</option>
+            <option value="40">40 inch</option>
+            <option value="43">43 inch</option>
+            <option value="50">50 inch</option>
+            <option value="55">55 inch</option>
+            <option value="65">65 inch</option>
+            <option value="75plus">75 inch +</option>
+          </select>
+      
+          <label for="internetServices">Internet Services</label>
+          <select id="internetServices" name="internetServices">
+            <option selected disabled>Select Services</option>
+            <option value="Netflix">Netflix</option>
+            <option value="Amazon Prime">Amazon Prime</option>
+            <option value="Disney+ Hotstar">Disney+ Hotstar</option>
+            <option value="YouTube">YouTube</option>
+            <option value="Zee5">Zee5</option>
+            <option value="Other">Other</option>
+          </select>
+      
+          <label for="controlMethod">Control Method</label>
+          <select id="controlMethod" name="controlMethod">
+            <option selected disabled>Select Control Method</option>
+            <option value="Remote">Remote</option>
+            <option value="Voice">Voice Control</option>
+            <option value="App">Mobile App</option>
+            <option value="Motion">Motion Control</option>
+            <option value="Other">Other</option>
+          </select>
+      
+          <label for="hdmiPorts">Total HDMI Ports</label>
+          <select id="hdmiPorts" name="hdmiPorts">
+            <option selected disabled>Select HDMI Ports</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5plus">5+</option>
+          </select>
+      
+          <label for="screenMirroring">Screen Mirroring Technology</label>
+          <select id="screenMirroring" name="screenMirroring">
+            <option selected disabled>Select Mirroring Technology</option>
+            <option value="Chromecast">Chromecast Built-in</option>
+            <option value="AirPlay">Apple AirPlay</option>
+            <option value="Miracast">Miracast</option>
+            <option value="DLNA">DLNA</option>
+            <option value="Other">Other</option>
+          </select>
+        
+            <br><br>
+            <button type="submit">search</button>
+        
+          </form>
+  </div>
+
+  <script>
+    function handleRecommendation(e) {
+      e.preventDefault();
+      alert("✅ Recommendation submitted! Our system will suggest a smart TV based on your inputs.");
+      // You can store data or integrate backend here
+    }
+  </script>
+</body>
+</html>

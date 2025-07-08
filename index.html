@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ideazoo - Smart suggestion system</title>
+ 
+</head>
+<style>
+      body {
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #121212 ;
+        color: #f0f0f0;
+        transition: background 0.5s ease;
+        padding-top: 120px;
+      }
+    
+      #splash {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: #0a0a0a;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 2000;
+        animation: fadeOut 2s ease forwards;
+        animation-delay: 3s;
+      }
+  
+      .logo-container h1 {
+        font-size: 4rem;
+        color: white;
+        opacity: 0;
+        animation: zoomFade 2s ease forwards;
+      }
+  
+      header {
+        background-color: #222;
+        color: #f0f0f0;
+        padding: 10px 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        width: 98.5%;
+        z-index: 1000;  
+      }
+  
+      header h1 {
+        margin: 0;
+        font-size: 2rem;
+      }
+  
+      nav a {
+        color: #f0f0f0;
+        margin-left: 20px;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1.1rem;
+        transition: color 0.3s ease;
+      }
+  
+      nav a:hover,
+      .navbar a:hover {
+        color: #00f0f0;
+      }
+  
+      .navbar {
+        display: flex;
+        align-items: center;
+        padding: 7px 17px;
+        background-color: #333;
+        color: #f0f0f0;
+        position: fixed;
+        top: 60px;
+        width: 100%;
+        z-index: 999;
+      }
+  
+      .navbar a {
+        color: #f0f0f0;
+        text-decoration: none;
+        margin: 2px 10px;
+        font-size: 1.2rem;
+      }
+  
+      .hero {
+        text-align: center;
+        padding: 100px 20px 60px;
+        background: linear-gradient(135deg, #00ffc6, #00b8b8);
+        color: #121212;
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+        
+      }
+  
+      .hero h2 {
+        font-size: 3rem;
+        margin-bottom: 20px;
+        animation: fadeIn 1.5s ease-out;
+        animation: fadeIn 1.2s ease forwards;
+  animation-delay: 4s;
+      }
+  
+      .hero p {
+        font-size: 1.3rem;
+        margin-bottom: 30px;
+        opacity: 0;
+        animation: fadeIn 2s ease-out forwards;
+        animation-delay: 1s;
+        animation: fadeIn 1.2s ease forwards;
+  animation-delay: 4s;
+      }
+  
+      .hero .btn {
+        padding: 12px 24px;
+        background-color: #ff4c60;
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        border-radius: 8px;
+        transition: background 0.3s ease, transform 0.3s ease;
+        box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15);
+      }
+  
+      .hero .btn:hover {
+        background-color: #ff6c7a;
+        transform: scale(1.1);
+      }
+  
+      main {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        padding: 20px;
+      }
+  
+      .category {
+        background: #1e1e1e;
+        color: #f0f0f0;
+        padding: 20px;
+        border: 1px solid #333;
+        text-align: center;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+  
+      .category:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      }
+  
+      .category img {
+        width: 100%;
+        max-height: 150px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 10px;
+      }
+  
+      .category h2 {
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
+  
+      .category button {
+        padding: 8px 16px;
+        background: #00ffc6;
+        color: #121212;
+        font-weight: bold;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+  
+      .category button:hover {
+        background-color: #00d0a4;
+        color: #fff;
+      
+      }
+  
+      footer {
+        text-align: center;
+        padding: 10px;
+        background-color: #181818;
+        color: #999;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        height: 40px;
+      }
+  
+      #suggestionResult {
+        text-align: center;
+        padding: 20px;
+      }
+            .animated-title {
+      animation: slideIn 4s ease-out forwards;
+      animation-delay: 8s;
+    }
+
+    .animated-text {
+      animation: fadeIn 4s ease-out forwards;
+      animation-delay: 8s;
+    }
+
+    .animated-btn {
+      animation: bounceIn 2.5s ease-out forwards;
+      animation-delay: 6s;
+    }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+          @keyframes zoomFade {
+        from {
+          transform: scale(0.5);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1.2);
+          opacity: 1;
+        }
+      }
+  
+      @keyframes fadeOut {
+        to {
+          opacity: 0;
+          visibility: hidden;
+        }
+      }
+
+    @keyframes slideIn {
+      from {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes bounceIn {
+      0% {
+        transform: scale(0.5);
+        opacity: 0;
+      }
+      60% {
+        transform: scale(1.2);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+</style>
+<body>
+  <div id="splash">
+    <div class="logo-container">
+      <h1>⚡ Ideazoo</h1>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <h1>⚡ Ideazoo</h1>
+    <nav>
+      <a href="add card.html">Add Card</a>
+      <a href="login page.html">Login</a>
+    </nav>
+  </header>
+
+ 
+  <div class="navbar">
+    <a href="#home">Home</a>
+  </div>
+
+
+  <section class="hero" id="home">
+    <h2 class="animated-title">Hi welcome to Ideazoo</h2>
+    <p class="animated-text">Tell us what you need. Ideazoo will recommend the best for you!</p>
+    <a href="#suggest" class="btn animated-btn">Get recommend</a>
+  </section>
+
+  <style>
+
+  </style>
+
+  <section>
+    <main>
+      <div class="category">
+        <img src="laptop.jpg" alt="Computer and Laptop">
+        <h2>Computer and Laptop</h2>
+        <a href="laptop recommendation.html"><button>View all</button></a>
+      </div>
+      <div class="category">
+        <img src="smartphone.jpg" alt="Smartphone">
+        <h2>Smartphone</h2>
+        <a href="smartphone.html"><button>View all</button></a>
+      </div>
+      <div class="category">
+        <img src="earphone.jpg" alt="Headphone and Earphone">
+        <h2>Headphone and Earphone</h2>
+        <a href="headphone.html"><button>View all</button></a>
+      </div>
+      <div class="category">
+        <img src="smartwatch.jpg" alt="Smartwatch">
+        <h2>Smartwatch</h2>
+        <a href="#"><button>View all</button></a>
+      </div>
+      <div class="category">
+        <img src="cable.jpg" alt="Cables and Chargers">
+        <h2>Cables and Chargers</h2>
+        <a href="cable.html"><button>View all</button></a>
+      </div>
+      <div class="category">
+        <img src="tv.jpg" alt="Smart T.V">
+        <h2>Smart T.V</h2>
+        <a href="smart TV.html"><button>View all</button></a>
+      </div>
+    </main>
+  </section>
+
+<script>
+    document.getElementById('suggestForm')?.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const category = document.getElementById('category').value;
+      const price = document.getElementById('price').value;
+
+      fetch('/suggest', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ category, price })
+      })
+      .then(response => response.json())
+      .then(data => {
+        const suggestionDiv = document.getElementById('suggestionResult');
+        if (data.suggestion) {
+          suggestionDiv.innerHTML = `
+            <h3>Suggested Product:</h3>
+            <p><strong>Name:</strong> ${data.suggestion.name}</p>
+            <p><strong>Category:</strong> ${data.suggestion.category}</p>
+            <p><strong>Price:</strong> ₹${data.suggestion.price}</p>
+          `;
+        } else {
+          suggestionDiv.innerHTML = `<p>${data.message}</p>`;
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+    });
+
+    window.addEventListener("load", () => {
+      setTimeout(() => {
+        const splash = document.getElementById("splash");
+        splash.style.display = "none";
+      }, 4000); // splash will disappear after 4 seconds
+    });
+</script>
+  
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login | Ideazoo</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #1e3c72, #2a5298);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #fff;
+    }
+
+    .login-container {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 40px;
+      border-radius: 15px;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+      animation: fadeIn 1s ease;
+    }
+
+    .login-container h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      font-size: 28px;
+      color: #00f6ff;
+    }
+
+    .login-container label {
+      display: block;
+      margin: 15px 0 5px;
+    }
+
+    .login-container input {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    .login-container input:focus {
+      outline: 2px solid #00f6ff;
+    }
+
+    .login-container button {
+      width: 106%;
+      padding: 12px;
+      margin-top: 20px;
+      background: #00b894;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .login-container button:hover {
+      background: #00a07c;
+    }
+
+    .login-container .bottom-text {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 14px;
+    }
+
+    .login-container a {
+      color: #00f6ff;
+      text-decoration: none;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h2>Login to Ideazoo</h2>
+    <form onsubmit="handleLogin(event)">
+      <label for="email">Email</label>
+      <input type="email" id="email" required placeholder="example@ideazoo.com"/>
+
+      <label for="password">Password</label>
+      <input type="password" id="password" required placeholder="********"/>
+
+      <button type="submit">Login</button>
+    </form>
+    <div class="bottom-text">
+      Don't have an account? <a href="register page.html">Register here
+    </div>
+  </div>
+
+  <script>
+    function handleLogin(e) {
+      e.preventDefault();
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+  
+      // Get registered user from localStorage
+      const storedUser = JSON.parse(localStorage.getItem("ideazooUser"));
+  
+      if (!storedUser) {
+        alert("❌ No registered user found. Please register first.");
+        return;
+      }
+  
+      // Validate login
+      if (email === "chetanpatel171005@gmail.com" && password === "Chetan@2117")
+       {
+        alert("✅ Login Successful!");
+        window.location.href = "index.html"; // Your home page
+      } else if (email === "chetanpatel2117@gmail.com" && password === "Chetan@123") {
+        alert("✅ Login Successful!");
+        window.location.href = "index.html"; // Your home page
+      } else {
+        alert("❌ Invalid credentials. Try again.");
+      }
+    }
+  </script>
+  
+</body>
+</html>

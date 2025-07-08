@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Recommendation | Ideazoo</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #141e30, #243b55);
+      margin: 0;
+      padding: 0;
+      color: #fff;
+    }
+    header {
+        background-color: #222;
+        color: #f0f0f0;
+        padding: 10px 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        width: 98.5%;
+        z-index: 1000;  
+      }
+  
+      header h1 {
+        margin: 0;
+        font-size: 2rem;
+      }
+      nav a {
+        color: #f0f0f0;
+        margin-left: 20px;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1.1rem;
+        transition: color 0.3s ease;
+      }
+  
+      nav a:hover,
+      .navbar a:hover {
+        color: #00f0f0;
+      }
+
+    .container {
+      max-width: 300px;
+      margin: 50px auto;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      right: 450px;
+      position: relative;
+      top: 20px;
+      z-index: 1;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #00ffd5;
+    }
+
+    form label {
+      display: block;
+      margin: 15px 0 5px;
+    }
+
+    form input, form select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      margin-bottom: 15px;
+      font-size: 15px;
+    }
+
+    form button {
+      width: 100%;
+      padding: 12px;
+      background-color: #00b894;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 16px;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    form button:hover {
+      background-color: #009e7d;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="#"><h1>⚡ Ideazoo</h1>
+    <nav>
+      <a href="add card.html">Add Card</a>
+      <a href="login page.html">Login</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h2>Find Your Perfect SmartPhone</h2>
+    <form onsubmit="handleRecommendation(event)">
+     
+        <form action="smartphone_results.php" method="POST">
+
+            <label>Price Range (₹)</label>
+            <select name="price">
+              <option selected disabled>Select Price</option>
+              <option value="5000-10000">₹5,000 - ₹10,000</option>
+              <option value="10000-15000">₹10,000 - ₹15,000</option>
+              <option value="15000-20000">₹15,000 - ₹20,000</option>
+              <option value="20000-30000">₹20,000 - ₹30,000</option>
+              <option value="30000-50000">₹30,000 - ₹50,000</option>
+              <option value="50000+">Above ₹50,000</option>
+            </select>
+        
+            <label>Memory Storage Capacity</label>
+            <select name="storage">
+              <option selected disabled>Select Storage</option>
+              <option value="32GB">32GB</option>
+              <option value="64GB">64GB</option>
+              <option value="128GB">128GB</option>
+              <option value="256GB">256GB</option>
+              <option value="512GB">512GB</option>
+              <option value="1TB">1TB</option>
+            </select>
+        
+            <label>Installed RAM Size</label>
+            <select name="ram">
+              <option selected disabled>Select RAM</option>
+              <option value="2GB">2GB</option>
+              <option value="4GB">4GB</option>
+              <option value="6GB">6GB</option>
+              <option value="8GB">8GB</option>
+              <option value="12GB">12GB</option>
+              <option value="16GB">16GB</option>
+            </select>
+        
+            <label>Brand</label>
+            <select name="brand">
+              <option selected disabled>Select Brand</option>
+              <option value="Samsung">Samsung</option>
+              <option value="Apple">Apple</option>
+              <option value="OnePlus">OnePlus</option>
+              <option value="Xiaomi">Xiaomi</option>
+              <option value="Realme">Realme</option>
+              <option value="Vivo">Vivo</option>
+              <option value="Oppo">Oppo</option>
+              <option value="Motorola">Motorola</option>
+            </select>
+        
+            <label>Cellular Technology</label>
+            <select name="cellular">
+              <option selected disabled>Select Cellular Tech</option>
+              <option value="2G">2G</option>
+              <option value="3G">3G</option>
+              <option value="4G">4G</option>
+              <option value="5G">5G</option>
+            </select>
+        
+            <label>Battery Capacity (mAh)</label>
+            <select name="battery_capacity">
+              <option selected disabled>Select Battery</option>
+              <option value="3000">3000 mAh</option>
+              <option value="4000">4000 mAh</option>
+              <option value="5000">5000 mAh</option>
+              <option value="6000">6000 mAh</option>
+              <option value="7000+">7000+ mAh</option>
+            </select>
+        
+            <label>Display Size (inches)</label>
+            <select name="display_size">
+              <option selected disabled>Select Display Size</option>
+              <option value="5.5">5.5"</option>
+              <option value="6.1">6.1"</option>
+              <option value="6.5">6.5"</option>
+              <option value="6.7">6.7"</option>
+              <option value="7.0+">7.0+" </option>
+            </select>
+        
+            <label>Processor Speed (GHz)</label>
+            <select name="processor_speed">
+              <option selected disabled>Select Speed</option>
+              <option value="1.8">1.8 GHz</option>
+              <option value="2.0">2.0 GHz</option>
+              <option value="2.2">2.2 GHz</option>
+              <option value="2.5">2.5 GHz</option>
+              <option value="3.0+">3.0+ GHz</option>
+            </select>
+        
+            <label>Operating System</label>
+            <select name="os">
+              <option selected disabled>Select OS</option>
+              <option value="Android">Android</option>
+              <option value="iOS">iOS</option>
+            </select>
+        
+            <label>Primary Camera Resolution (MP)</label>
+            <select name="rear_camera">
+              <option selected disabled>Select Rear Camera</option>
+              <option value="12MP">12MP</option>
+              <option value="48MP">48MP</option>
+              <option value="64MP">64MP</option>
+              <option value="108MP">108MP</option>
+              <option value="200MP">200MP</option>
+            </select>
+        
+            <label>SIM Card Slot Count</label>
+            <select name="sim_slots">
+              <option selected disabled>Select SIM Slots</option>
+              <option value="1">Single SIM</option>
+              <option value="2">Dual SIM</option>
+            </select>
+        
+            <label>Front Camera Resolution (MP)</label>
+            <select name="front_camera">
+              <option selected disabled>Select Front Camera</option>
+              <option value="8MP">8MP</option>
+              <option value="16MP">16MP</option>
+              <option value="32MP">32MP</option>
+              <option value="50MP">50MP</option>
+            </select>
+        
+            <label>Connector Type</label>
+            <select name="connector">
+              <option selected disabled>Select Connector</option>
+              <option value="USB-C">USB-C</option>
+              <option value="Micro USB">Micro USB</option>
+              <option value="Lightning">Lightning</option>
+            </select>
+        
+            <label>Battery Life (Hours)</label>
+            <select name="battery_life">
+              <option selected disabled>Select Battery Life</option>
+              <option value="6">Up to 6 hrs</option>
+              <option value="10">Up to 10 hrs</option>
+              <option value="15">Up to 15 hrs</option>
+              <option value="20">Up to 20 hrs</option>
+            </select>
+        
+            <label>Video Capture Resolution</label>
+            <select name="video_resolution">
+              <option selected disabled>Select Video Resolution</option>
+              <option value="1080p">1080p</option>
+              <option value="4K">4K</option>
+              <option value="8K">8K</option>
+            </select>
+        
+            <label>Security Features</label>
+            <select name="security">
+              <option selected disabled>Select Security</option>
+              <option value="Face Unlock">Face Unlock</option>
+              <option value="Fingerprint">Fingerprint Sensor</option>
+              <option value="PIN/Pattern">PIN/Pattern</option>
+            </select>
+        
+            <br><br>
+            <button type="submit">Find Phones</button>
+        
+          </form>
+  </div>
+
+  <script>
+    function handleRecommendation(e) {
+      e.preventDefault();
+      alert("✅ Recommendation submitted! Our system will suggest a smartphone based on your inputs.");
+      // You can store data or integrate backend here
+    }
+  </script>
+</body>
+</html>

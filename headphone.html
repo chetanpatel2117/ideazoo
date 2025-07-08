@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Recommendation | Ideazoo</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #141e30, #243b55);
+      margin: 0;
+      padding: 0;
+      color: #fff;
+    }
+    header {
+        background-color: #222;
+        color: #f0f0f0;
+        padding: 10px 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        width: 98.5%;
+        z-index: 1000;  
+      }
+  
+      header h1 {
+        margin: 0;
+        font-size: 2rem;
+      }
+      nav a {
+        color: #f0f0f0;
+        margin-left: 20px;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1.1rem;
+        transition: color 0.3s ease;
+      }
+  
+      nav a:hover,
+      .navbar a:hover {
+        color: #00f0f0;
+      }
+
+    .container {
+      max-width: 300px;
+      margin: 50px auto;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      right: 450px;
+      position: relative;
+      top: 20px;
+      z-index: 1;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #00ffd5;
+    }
+
+    form label {
+      display: block;
+      margin: 15px 0 5px;
+    }
+
+    form input, form select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      margin-bottom: 15px;
+      font-size: 15px;
+    }
+
+    form button {
+      width: 100%;
+      padding: 12px;
+      background-color: #00b894;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 16px;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    form button:hover {
+      background-color: #009e7d;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>⚡ Ideazoo</h1>
+    <nav>
+      <a href="add card.html">Add Card</a>
+      <a href="login page.html">Login</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h2>Find Your Perfect headphone & earphone</h2>
+    <form onsubmit="handleRecommendation(event)">
+     
+      <form action="/recommendation-results" method="POST">
+        <div class="filter-section">
+
+    <label for="price">Price</label>
+    <select id="price" name="price">
+      <option selected disabled>Select Price Range</option>
+      <option value="under500">Under ₹500</option>
+      <option value="500-1000">₹500 - ₹1000</option>
+      <option value="1000-3000">₹1000 - ₹3000</option>
+      <option value="3000-5000">₹3000 - ₹5000</option>
+      <option value="5000plus">₹5000+</option>
+    </select>
+
+    <label for="connectivity">Connectivity Technology</label>
+    <select id="connectivity" name="connectivity">
+      <option selected disabled>Select Connectivity</option>
+      <option value="wired">Wired</option>
+      <option value="wireless">Wireless</option>
+      <option value="bluetooth">Bluetooth</option>
+      <option value="usb">USB</option>
+    </select>
+
+    <label for="brands">Brands</label>
+    <select id="brands" name="brands">
+      <option selected disabled>Select Brand</option>
+      <option value="boat">boAt</option>
+      <option value="realme">Realme</option>
+      <option value="sony">Sony</option>
+      <option value="jbl">JBL</option>
+      <option value="samsung">Samsung</option>
+      <option value="noise">Noise</option>
+      <option value="oneplus">OnePlus</option>
+      <option value="boult">Boult Audio</option>
+    </select>
+
+    <label for="color">Color</label>
+    <select id="color" name="color">
+      <option selected disabled>Select Color</option>
+      <option value="black">Black</option>
+      <option value="white">White</option>
+      <option value="red">Red</option>
+      <option value="blue">Blue</option>
+      <option value="green">Green</option>
+      <option value="gray">Gray</option>
+    </select>
+
+    <label for="noiseControl">Noise Control</label>
+    <select id="noiseControl" name="noiseControl">
+      <option selected disabled>Select Noise Control</option>
+      <option value="active">Active Noise Cancellation (ANC)</option>
+      <option value="passive">Passive Noise Cancellation</option>
+      <option value="none">None</option>
+    </select>
+
+    <label for="controlMethod">Control Method</label>
+    <select id="controlMethod" name="controlMethod">
+      <option selected disabled>Select Control Method</option>
+      <option value="touch">Touch</option>
+      <option value="button">Button</option>
+      <option value="voice">Voice</option>
+    </select>
+
+    <br><br>
+    <button type="submit">Search</button>
+
+</div>
+  </form>
+  </div>
+
+  <script>
+    function handleRecommendation(e) {
+      e.preventDefault();
+      alert("✅ Recommendation submitted! Our system will suggest a headphone based on your inputs.");
+      // You can store data or integrate backend here
+    }
+  </script>
+</body>
+</html>

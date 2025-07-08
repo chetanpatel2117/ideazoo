@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Recommendation | Ideazoo</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #141e30, #243b55);
+      margin: 0;
+      padding: 0;
+      color: #fff;
+    }
+    header {
+        background-color: #222;
+        color: #f0f0f0;
+        padding: 10px 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        width: 98.5%;
+        z-index: 1000;  
+      }
+  
+      header h1 {
+        margin: 0;
+        font-size: 2rem;
+      }
+      nav a {
+        color: #f0f0f0;
+        margin-left: 20px;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1.1rem;
+        transition: color 0.3s ease;
+      }
+  
+      nav a:hover,
+      .navbar a:hover {
+        color: #00f0f0;
+      }
+
+    .container {
+      max-width: 300px;
+      margin: 50px auto;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      right: 450px;
+      position: relative;
+      top: 20px;
+      z-index: 1;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #00ffd5;
+    }
+
+    form label {
+      display: block;
+      margin: 15px 0 5px;
+    }
+
+    form input, form select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      margin-bottom: 15px;
+      font-size: 15px;
+    }
+
+    form button {
+      width: 100%;
+      padding: 12px;
+      background-color: #00b894;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 16px;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    form button:hover {
+      background-color: #009e7d;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>⚡ Ideazoo</h1>
+    <nav>
+      <a href="add card.html">Add Card</a>
+      <a href="login page.html">Login</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h2>Find Your Perfect cable</h2>
+    <form onsubmit="handleRecommendation(event)">
+     
+      <form action="/recommendation-results" method="POST">
+        <div class="filter-section">
+          
+          <label for="price">Price</label>
+          <select id="price" name="price">
+            <option selected disabled>Select Price Range</option>
+            <option value="under200">Under ₹200</option>
+            <option value="200-500">₹200 - ₹500</option>
+            <option value="500-1000">₹500 - ₹1000</option>
+            <option value="1000plus">₹1000+</option>
+          </select>
+      
+          <label for="length">Length</label>
+          <select id="length" name="length">
+            <option selected disabled>Select Cable Length</option>
+            <option value="0.5m">0.5 Meter</option>
+            <option value="1m">1 Meter</option>
+            <option value="1.5m">1.5 Meter</option>
+            <option value="2m">2 Meter</option>
+            <option value="3m">3 Meter</option>
+            <option value="5mplus">5 Meter +</option>
+          </select>
+      
+          <label for="connectorType">Connector Type</label>
+          <select id="connectorType" name="connectorType">
+            <option selected disabled>Select Connector Type</option>
+            <option value="USB-A to USB-C">USB-A to USB-C</option>
+            <option value="USB-A to Micro-USB">USB-A to Micro-USB</option>
+            <option value="USB-C to USB-C">USB-C to USB-C</option>
+            <option value="USB-C to Lightning">USB-C to Lightning</option>
+            <option value="HDMI">HDMI</option>
+            <option value="Aux 3.5mm">Aux 3.5mm</option>
+          </select>
+      
+          <label for="color">Color</label>
+          <select id="color" name="color">
+            <option selected disabled>Select Color</option>
+            <option value="Black">Black</option>
+            <option value="White">White</option>
+            <option value="Red">Red</option>
+            <option value="Blue">Blue</option>
+            <option value="Green">Green</option>
+            <option value="Grey">Grey</option>
+          </select>
+      
+          <label for="voltage">Maximum Voltage</label>
+          <select id="voltage" name="voltage">
+            <option selected disabled>Select Voltage</option>
+            <option value="5V">5V</option>
+            <option value="9V">9V</option>
+            <option value="12V">12V</option>
+            <option value="18V">18V</option>
+            <option value="20V">20V</option>
+          </select>
+      
+          <label for="dataRate">Data Transfer Rate</label>
+          <select id="dataRate" name="dataRate">
+            <option selected disabled>Select Data Rate</option>
+            <option value="480Mbps">480 Mbps (USB 2.0)</option>
+            <option value="5Gbps">5 Gbps (USB 3.0)</option>
+            <option value="10Gbps">10 Gbps (USB 3.1)</option>
+            <option value="20Gbps">20 Gbps (USB 3.2)</option>
+            <option value="40Gbps">40 Gbps (Thunderbolt 3/4)</option>
+          </select>
+      
+          <label for="connectorGender">Connector Gender</label>
+          <select id="connectorGender" name="connectorGender">
+            <option selected disabled>Select Gender</option>
+            <option value="Male-to-Male">Male to Male</option>
+            <option value="Male-to-Female">Male to Female</option>
+            <option value="Female-to-Female">Female to Female</option>
+          </select>
+      
+      
+          <br><br>
+          <button type="submit">Search</button>
+      
+        </div>
+      </form>
+      <div class="filter-group">
+
+</div>
+  </form>
+  </div>
+
+  <script>
+    
+    function handleRecommendation(e) {
+      e.preventDefault();
+      const form = e.target;
+      const selectedOptions = {
+        price: form.price.value,
+        length: form.length.value,
+        connectorType: form.connectorType.value,
+        color: form.color.value,
+        voltage: form.voltage.value,
+        dataRate: form.dataRate.value,
+        connectorGender: form.connectorGender.value,
+      };
+      
+      // You can process the selectedOptions or integrate backend logic here
+    }
+      e.preventDefault();
+      alert("✅ Recommendation submitted! Our system will suggest a cable based on your inputs.");
+      // You can store data or integrate backend here
+    
+  </script>
+</body>
+</html>
