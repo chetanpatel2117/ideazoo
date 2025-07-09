@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shopping Cart</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f6f6f6;
+    }
+
+    header {
+      background-color: #232f3e;
+      padding: 20px;
+      color: white;
+      font-size: 24px;
+      text-align: center;
+    }
+
+    .cart-container {
+      max-width: 1000px;
+      margin: 30px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+    .cart-item {
+      display: flex;
+      border-bottom: 1px solid #ddd;
+      padding: 15px 0;
+      align-items: center;
+    }
+
+    .cart-item img {
+      width: 120px;
+      height: auto;
+      margin-right: 20px;
+    }
+
+    .item-details {
+      flex: 1;
+    }
+
+    .item-details h4 {
+      margin: 0 0 10px;
+      font-size: 18px;
+    }
+
+    .item-details p {
+      margin: 5px 0;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .quantity {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .quantity input {
+      width: 50px;
+      padding: 5px;
+      text-align: center;
+    }
+
+    .price {
+      font-size: 18px;
+      font-weight: bold;
+      margin-left: 20px;
+    }
+
+    .checkout {
+      text-align: right;
+      margin-top: 20px;
+    }
+
+    .checkout button {
+      background-color: #ffd814;
+      border: 1px solid #fcd200;
+      padding: 12px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+
+    .checkout button:hover {
+      background-color: #f7ca00;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    Your Shopping Cart
+  </header>
+
+  <div class="cart-container">
+
+
+    <!-- Checkout Button -->
+    <div class="checkout">
+      <button>Proceed to Checkout</button>
+    </div>
+  </div>
+
+</body>
+</html>
